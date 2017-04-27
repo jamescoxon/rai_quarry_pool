@@ -29,6 +29,7 @@ db = dataset.connect('sqlite:///mydatabase.db')
 
 # get a reference to the table 'user'
 table = db['user']
+
 while 1:
 	total_address_claims = table.find(submitted=0)
 	cap_data = []
@@ -37,6 +38,8 @@ while 1:
 		cap_data.append(xrb_address['grecaptcha'])
 
 	if len(cap_data) > 0:
+		total_claims_data = len(cap_data)
+		print("Claims to send: ", total_claims_data)
 		json_string = json.dumps(cap_data)
 		data = {}
 		data['ask_address']=pool_address
@@ -58,6 +61,9 @@ while 1:
 		#{"error":"no","valid":1,"thanks":1,"valid_captchas":[0]}
 		if json_response['error'] == "no":
 			print("Submit accepted, valid: ", json_response['valid'])
+			diff = total_claims_data - int(json_response['valid'])
+			print("Diff: ", diff)
+
 			for update_data in cap_data:
 				#print(update_data)
 				table.update(dict(grecaptcha=update_data, submitted=1), ['grecaptcha'])

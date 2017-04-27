@@ -1,5 +1,7 @@
 # rai_quarry_pool
 
+This is alpha code - while it has been tested it might not work for you...
+
 ## Installation Guide (Rough)
 
 1. `apt-get update`

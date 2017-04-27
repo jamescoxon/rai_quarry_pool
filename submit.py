@@ -63,7 +63,7 @@ while 1:
 			print("Submit accepted, valid: ", json_response['valid'])
 			diff = total_claims_data - int(json_response['valid'])
 			print("Diff: ", diff)
-
+			#valid_captchas
 			for update_data in cap_data:
 				#print(update_data)
 				table.update(dict(grecaptcha=update_data, submitted=1), ['grecaptcha'])

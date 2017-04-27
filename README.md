@@ -22,3 +22,9 @@
 
 14. Run another screen
 15. `python3 submit.py` <- this now submits the data every 90seconds
+
+## Things to add
+
+1. check valid responses, identify the invalid ones and remove from the database
+2. save each payout data
+3. add interaction with a raiblocks node which will allow auto payout

@@ -2,6 +2,10 @@
 
 This is alpha code - while it has been tested it might not work for you...
 
+## Testing
+
+You can test the pool at http://46.101.95.140:5000/pool (however server may be closed at a later date)
+
 ## Installation Guide (Rough)
 
 1. `apt-get update`

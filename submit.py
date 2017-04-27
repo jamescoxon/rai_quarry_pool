@@ -63,10 +63,18 @@ while 1:
 			print("Submit accepted, valid: ", json_response['valid'])
 			diff = total_claims_data - int(json_response['valid'])
 			print("Diff: ", diff)
-			#valid_captchas
-			for update_data in cap_data:
-				#print(update_data)
-				table.update(dict(grecaptcha=update_data, submitted=1), ['grecaptcha'])
+			print("Array of submissions: ", json_response['valid_captchas'])
+
+			for submissions in json_response['valid_captchas']:
+				table.update(dict(grecaptcha=cap_data[submissions], submitted=1), ['grecaptcha'])
+
+			if diff > 0:
+				#Remove invalid claims
+				claims_left = table.find(submitted=0)
+				for claims in claims_left:
+					print(claims['id'])
+					table.delete(id=claims['id'])
+
 			print("Database updated")
 		else:
 			for update_data in cap_data:

@@ -30,3 +30,4 @@ This is alpha code - while it has been tested it might not work for you...
 1. check valid responses, identify the invalid ones and remove from the database
 2. save each payout data
 3. add interaction with a raiblocks node which will allow auto payout
+4. fix javascript to autocaptcha

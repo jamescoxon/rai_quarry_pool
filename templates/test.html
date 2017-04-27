@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>reCAPTCHA demo: Simple page</title>
+     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+     <script type='text/javascript'>
+	var onReturnCallback = function(response) {
+	document.recaptcha.submit();
+	}
+     </script>
+  </head>
+  <body>
+    <h1>Hello {{ address }}!</h1>
+    <form action="/submit" method="POST" name="recaptcha">
+      <div class="g-recaptcha" data-sitekey="6LeEJxQUAAAAAMo9hNkAvl-lsVdY5xL6CATu9TnA" data-callback="onReturnCallback"></div>
+      <br/>
+    </form>
+   <h2>Unsubmitted claims: {{ unsub_claims }} </h2>
+   <h2>Unpaid claims: {{ unpai_claims }} </h2>
+   <h2>Percentage claim: {{ perc_claims }}% </h2>
+   <h2>Total Pool claims: {{ total_claims }} </h2>
+  </body>
+</html>

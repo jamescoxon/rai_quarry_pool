@@ -2,7 +2,7 @@
 
 ## Installation Guide (Rough)
 
-1. `apt-get update'
+1. `apt-get update`
 2. `apt-get install python3-pip`
 3. `pip3 install --upgrade pip`
 4. `pip3 install dataset`
@@ -13,7 +13,7 @@
 
 8. Edit app.py and submit.py and add the address you want the faucet to pay to
 
-9. Open 'screen'
+9. Open `screen`
 10. `gunicorn --bind 0.0.0.0:5000 app:app`
 11. Detach the screen using Ctrl-A-D
 

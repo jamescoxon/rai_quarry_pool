@@ -118,6 +118,23 @@ while 1:
 			payout_id = time.time()
 			print("Now update database:", payout_id)
 			top_60 = 0
+			#Save payout details
+			payout_file_name = payout_id + '.txt'
+			payout_file = open(payout_file_name, 'w')
+			all_unpaid = table.find(paid=0)
+			unpaid_address = []
+			for unpaid in all_unpaid:
+				unpaid_address.append(unpaid['address'])
+
+			total_unpaid_address = len(unpaid_address)
+
+			list_unpaid_address = set(unpaid_address)
+			for unique_address in list_unpaid_address:
+				perc_claims = (int(unpaid_address.count(unique_address)) / total_unpaid_address) * 100
+				print(unique_address, " : ", unpaid_address.count(unique_address), " " ,perc_claims, "%")
+				payout.write(unique_address, " : ", unpaid_address.count(unique_address), " " ,perc_claims, "%")
+			payout_file.close()
+			#Update database
 			all_unpaid = table.find(paid=0)
 			for unpaid in all_unpaid:
 				data = dict(id=unpaid['id'], paid=payout_id)
@@ -146,7 +163,6 @@ while 1:
 		all_unpaid = table.find(paid=0)
 		unpaid_address = []
 		for unpaid in all_unpaid:
-#	print(unpaid['address'])
 			unpaid_address.append(unpaid['address'])
 
 		total_unpaid_address = len(unpaid_address)

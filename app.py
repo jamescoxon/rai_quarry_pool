@@ -58,7 +58,7 @@ def pool(address=None):
 		perc_claims = 0
 	print(perc_claims)
 
-	return render_template('test.html', address=address, unsub_claims=unsubmitted_claims, unpai_claims=unpaid_claims, perc_claims=perc_claims, total_claims=len_unpaid_address)
+	return render_template('pool.html', address=address, unsub_claims=unsubmitted_claims, unpai_claims=unpaid_claims, perc_claims=perc_claims, total_claims=len_unpaid_address)
 
 @app.route('/error')
 def error():

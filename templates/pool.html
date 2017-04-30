@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>Rai Quarry Pool</title>
+     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+     <script type='text/javascript'>
+	window.onload = function(){
+  		document.getElementById('claimbutton').click();
+	}
+	var onReturnCallback = function(response) {
+	document.recaptcha.submit();
+	grecaptcha.reset();
+	}
+     </script>
+  </head>
+  <body>
+    <h1>Hello {{ address }}!</h1>
+    <h2>Please be aware that this is a test server of new code!</h2>
+    <form action="/submit" method="POST" name="recaptcha">
+      <button id="claimbutton" class="g-recaptcha" data-sitekey="6LeEJxQUAAAAAMo9hNkAvl-lsVdY5xL6CATu9TnA" 
+    	data-callback="onReturnCallback">Claim</button>
+    </form>
+   <h2>Unsubmitted claims: {{ unsub_claims }} </h2>
+   <h2>Unpaid claims: {{ unpai_claims }} </h2>
+   <h2>Percentage claim: {{ perc_claims }}% </h2>
+   <h2>Total Pool claims: {{ total_claims }} </h2>
+  <h3>Info</h3>
+  <p>Code can be found on <a href="https://github.com/jamescoxon/rai_quarry_pool">github</a></p>
+  <p>The pool server collects the responses from the captchas and every 90 seconds submits them to the main raiblocks server, the main server only pays out once the pool reaches the top 60 claims. At this point the pool software detects this, saves the breakdown of claims and then restarts the process. Currently it is necessary to manually payout the individual claimers.</p>
+  </body>
+</html>

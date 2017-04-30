@@ -32,6 +32,12 @@ def start():
 def default_pool():
 	return render_template('info.html')
 
+@app.route("/redirect", methods=["POST"])
+def address_redirect():
+	address=request.form['xrb_address']
+	complete_address = '/pool/' + address
+	return redirect(complete_address)
+
 @app.route('/pool/<address>')
 def pool(address=None):
 	total_address_claims = table.find(address=address)

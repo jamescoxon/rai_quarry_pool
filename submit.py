@@ -6,7 +6,8 @@ from urllib.error import URLError, HTTPError
 import json
 import time
 
-pool_address = 'xrb_317ngidjcgamhiq79kztd69kx1kiusybhzakya9xhxjoaabkhrmp8mr4wio4'
+#pool_address = 'xrb_317ngidjcgamhiq79kztd69kx1kiusybhzakya9xhxjoaabkhrmp8mr4wio4'
+pool_address = 'xrb_3qy46qwumsxazxm5p1m4wphqbbzcuo5j1ukinqj5889f9m99mhtjxcrok699'
 top_60 = 0
 
 def post_data(data):
@@ -111,7 +112,10 @@ while 1:
 		print(payout_raw)
 
 		acc_payout = payout['pending']
-		exp_payout = acc_payout[0]['expected-pay']
+		if len(acc_payout) >= 0:
+			exp_payout = acc_payout[0]['expected-pay']
+		else:
+			exp_payout = 0
 		print("Expected: ", exp_payout)
 
 		if ((top_60 == 1) and int(exp_payout) == 0):
@@ -119,7 +123,7 @@ while 1:
 			print("Now update database:", payout_id)
 			top_60 = 0
 			#Save payout details
-			payout_file_name = payout_id + '.txt'
+			payout_file_name = str(payout_id) + '.txt'
 			payout_file = open(payout_file_name, 'w')
 			all_unpaid = table.find(paid=0)
 			unpaid_address = []
@@ -132,7 +136,8 @@ while 1:
 			for unique_address in list_unpaid_address:
 				perc_claims = (int(unpaid_address.count(unique_address)) / total_unpaid_address) * 100
 				print(unique_address, " : ", unpaid_address.count(unique_address), " " ,perc_claims, "%")
-				payout.write(unique_address, " : ", unpaid_address.count(unique_address), " " ,perc_claims, "%")
+				save_data = str(unique_address) + "," + str(unpaid_address.count(unique_address)) + "," + str(perc_claims) + "\r\n"
+				payout_file.write(save_data)
 			payout_file.close()
 			#Update database
 			all_unpaid = table.find(paid=0)
@@ -157,7 +162,8 @@ while 1:
 			print("Continue claiming")
 
 		print("Pending: ", payout['pending'])
-		print("Validated claims: ", acc_payout[0]['pending'])
+		if len(acc_payout) >= 0:
+			print("Validated claims: ", acc_payout[0]['pending'])
 		print("Threshold: ", payout['threshold'])
 
 		all_unpaid = table.find(paid=0)
@@ -170,7 +176,7 @@ while 1:
 		list_unpaid_address = set(unpaid_address)
 		for unique_address in list_unpaid_address:
 			perc_claims = (int(unpaid_address.count(unique_address)) / total_unpaid_address) * 100
-			print(unique_address, " : ", unpaid_address.count(unique_address), " " ,perc_claims, "%")
+			#print(unique_address, " : ", unpaid_address.count(unique_address), " " ,perc_claims, "%")
 
 	print("Done")
 

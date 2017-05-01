@@ -8,7 +8,8 @@ from urllib.request import Request, urlopen
 import json
 import dataset
 
-pool_address = 'xrb_317ngidjcgamhiq79kztd69kx1kiusybhzakya9xhxjoaabkhrmp8mr4wio4'
+#pool_address = 'xrb_317ngidjcgamhiq79kztd69kx1kiusybhzakya9xhxjoaabkhrmp8mr4wio4'
+pool_address = 'xrb_3qy46qwumsxazxm5p1m4wphqbbzcuo5j1ukinqj5889f9m99mhtjxcrok699'
 
 # connecting to a SQLite database
 db = dataset.connect('sqlite:///mydatabase.db')

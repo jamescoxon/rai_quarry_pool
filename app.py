@@ -104,11 +104,13 @@ def display_stats():
 
 	list_unpaid_address = set(unpaid_address)
 	len_unpaid_address = len(unpaid_address)
+	list_claims = []
 	for unique_address in list_unpaid_address:
 		perc_claims = (int(unpaid_address.count(unique_address)) / len_unpaid_address) * 100
 		print(unique_address, " : ", unpaid_address.count(unique_address), " " ,perc_claims, "%")
-
-	return render_template('stats.html', len_unpaid=len_unpaid_address, payout_threshold=payout['threshold'] )
+		temp = {'address': unique_address, 'claims' : unpaid_address.count(unique_address), 'perc' : perc_claims}
+		list_claims.append(temp)
+	return render_template('stats.html', len_unpaid=len_unpaid_address, payout_threshold=payout['threshold'], claims=list_claims )
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')

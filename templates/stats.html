@@ -1,5 +1,18 @@
 <!doctype html>
-<title>Hello from Flask</title>
+<title>Pool Stats</title>
 
 <h3>Total claims: {{ len_unpaid }}</h3>
 <h3>Threshold: {{ payout_threshold }} </h3>
+
+<table>
+<tr>
+<th>Address</th>
+<th>%</th>
+</tr>
+{% for t in claims %}
+<tr>
+<td><a href="https://raiblockscommunity.net/account/index.php?acc={{ t['address'] }}">{{ t['address'] }}</a></td>
+<td>{{ t['perc'] }}</td>
+</tr>
+{% endfor %}
+</table>

@@ -12,7 +12,7 @@ top_60 = 0
 
 def post_data(data):
 
-	url = 'https://raiblockscommunity.net/faucet/elaborate.php' # Set destination URL here
+	url = 'https://faucet.raiblockscommunity.net/elaborate.php' # Set destination URL here
 
 	try:
 		request = Request(url, urlencode(data).encode())
@@ -29,7 +29,7 @@ def post_data(data):
 
 def payout_data():
 
-	url = 'https://raiblockscommunity.net/faucet/paylist.php' # Set destination URL here
+	url = 'https://faucet.raiblockscommunity.net/paylist.php' # Set destination URL here
 	try:
 		data = {'acc': pool_address, 'json': 1}
 		request = Request(url, urlencode(data).encode())

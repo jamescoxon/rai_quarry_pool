@@ -15,8 +15,7 @@
   <body>
     <h1>Hello {{ address }}!</h1>
     <form action="/submit" method="POST" name="recaptcha">
-      <button id="claimbutton" class="g-recaptcha" data-sitekey="6LeEJxQUAAAAAMo9hNkAvl-lsVdY5xL6CATu9TnA" 
-    	data-callback="onReturnCallback">Claim</button>
+      <button id="claimbutton" class="g-recaptcha" data-sitekey="6Lf0qx8UAAAAAN1eEGr2nSAFckLjjVuzXAw4qhHM" data-callback="onReturnCallback">Claim</button>
     </form>
    <h2>Unsubmitted claims: {{ unsub_claims }} </h2>
    <h2>Unpaid claims: {{ unpai_claims }} </h2>
@@ -27,6 +26,6 @@
   <p>The pool server collects the responses from the captchas and every 90 seconds submits them to the main raiblocks server, the main server only pays out once the pool reaches the top 60 claims. At this point the pool software detects this, saves the breakdown of claims and then restarts the process. Currently it is necessary to manually payout the individual claimers.</p>
   <br>
   <h3>Notes/Updates</h3>
-  <p>01/05/17 1800 - Payout complete, server restarted, one step closer to automating payouts </p>
+  <p>No updates</p>
   </body>
 </html>

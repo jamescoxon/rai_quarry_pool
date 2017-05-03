@@ -19,7 +19,7 @@ table = db['user']
 
 def payout_data():
 
-        url = 'https://raiblockscommunity.net/faucet/paylist.php' # Set destination URL here
+        url = 'https://faucet.raiblockscommunity.net/paylist.php' # Set destination URL here
         data = {'acc': pool_address, 'json': 1}
         request = Request(url, urlencode(data).encode())
         json = urlopen(request).read().decode()

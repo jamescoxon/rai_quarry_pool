@@ -29,9 +29,9 @@ You can test the pool at http://46.101.95.140:5000/pool (however server may be c
 14. Run another screen
 15. `python3 submit.py` <- this now submits the data every 90seconds
 
+## Notes
+If you are using a new raiblocks account then you need to send it some xrb or the server won't detect that it exists.
+
 ## Things to add
 
-1. check valid responses, identify the invalid ones and remove from the database
-2. save each payout data
-3. add interaction with a raiblocks node which will allow auto payout
-4. fix javascript to autocaptcha
+1. add interaction with a raiblocks node which will allow auto payout

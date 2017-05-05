@@ -17,7 +17,7 @@ You can test the pool at http://46.101.95.140:5000/pool (however server may be c
 
 7. `git clone https://github.com/jamescoxon/rai_quarry_pool.git`
 
-8. Edit app.py and submit.py and add the address you want the faucet to pay to
+8. `cd rai_quarry_pool` and edit app.py and submit.py and add the address you want the faucet to pay to
 
 9. Open `screen`
 10. `gunicorn --bind 0.0.0.0:5000 app:app`
@@ -26,7 +26,7 @@ You can test the pool at http://46.101.95.140:5000/pool (however server may be c
 12. Find out your IP address using `ifconfig`
 13. check in web browser http://<ip_address>:5000/pool
 
-14. Run another screen
+14. Run another 'screen'
 15. `python3 submit.py` <- this now submits the data every 90seconds
 
 ## Notes

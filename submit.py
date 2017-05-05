@@ -153,11 +153,6 @@ while 1:
 			if (int(acc_payout[0]['pending']) == 0):
 				payout_id = time.time()
 				print("Now update database:", payout_id)
-#	all_unpaid = table.find(paid=0)
-#	for unpaid in all_unpaid:
-#		data = dict(id=unpaid['id'], paid=payout_id)
-#		table.update(data, ['id'])
-#	print("Table updated")
 		else:
 			print("Continue claiming")
 
